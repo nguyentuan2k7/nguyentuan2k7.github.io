@@ -1,0 +1,67 @@
+/* --- CSS từ bài trước --- */
+body {
+    margin: 0;
+    padding: 0;
+    background: #ccc;
+    font-family: Arial, sans-serif;
+}
+
+section {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+header > p {
+    font-style: italic;
+    margin-top: 0;
+}
+
+article > p {
+    font-size: 20px;
+}
+
+/* --- CSS mới cho bài này --- */
+
+/* Thanh Menu */
+nav {
+    background: #444; /* Màu nền tối */
+    padding: 15px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Căn giữa các mục menu */
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+/* Chân trang */
+footer {
+    background: #444;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 14px;
+}
