@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #ccc; /* Màu nền xám nhạt */
+}
+
+section {
+    margin-left: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+/* Định dạng đoạn văn trong header (phần Written by...) */
+header > p {
+    font-style: italic;
+    margin-top: 0;
+}
+
+/* Định dạng đoạn văn nội dung chính của blog */
+article > p {
+    font-size: 24px;
+}
