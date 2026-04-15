@@ -1,4 +1,4 @@
-/* CSS Document */
+/* Step 3: Global & Header Styles */
 BODY {
     margin: auto;
     padding: 0px;
@@ -15,7 +15,7 @@ BODY {
 }
 
 header {
-    background: url(https://i.pinimg.com/736x/1e/15/34/1e1534ed46b2fcb93b3a200a347a1550.jpg);
+    background: url(https://i.pinimg.com/1200x/f8/c1/68/f8c16875c104adb82bfb8aa99c817c73.jpg);
     height: 181px;
     width: 900px;
 }
@@ -33,7 +33,6 @@ header {
     border-radius: 10px 0px 0px 10px;
 }
 
-/* Step 3 & 4 Navigation */
 .level1 {
     clear: both;
     list-style-type: none;
@@ -84,6 +83,7 @@ header {
     background: #CC0;
 }
 
+/* Step 4: Welcome Styles */
 #welcome {
     background: #fff;
     padding: 8px;
@@ -92,7 +92,7 @@ header {
     font-weight: bold;
 }
 
-/* Step 5: Content Styles */
+/* Step 5: Content & New Product Styles */
 #center_content {
     background: url(images/center_bg.gif) repeat-y;
     width: 900px;
@@ -122,6 +122,12 @@ header {
     clear: both;
     float: left;
     margin-left: 20px;
+    width: 150px; 
+}
+.product .img img {
+    width: 150px;      
+    height: auto;
+    display: block;
 }
 
 .product .description {
@@ -133,6 +139,7 @@ header {
 }
 
 .product .name {
+    display: block;
     color: #B81F22;
     font-weight: bold;
 }
@@ -141,7 +148,7 @@ header {
     text-align: justify;
 }
 
-/* Step 6 & 7: Right Side Styles */
+/* Step 6: Promotion Styles */
 #center_content #right {
     width: 380px;
     min-height: 200px;
@@ -160,6 +167,8 @@ header {
 .product_small .name {
     text-align: center;
     color: #666;
+    clear: both;    
+    display: block;  
 }
 
 .product_small .img {
@@ -171,6 +180,7 @@ header {
     float: left;
 }
 
+/* Step 7: Catalog Styles */
 #categories {
     float: left;
     width: 200px;
