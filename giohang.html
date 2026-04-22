@@ -264,8 +264,14 @@
 <div class="flex flex-col gap-2">
 <label class="font-label-bold text-on-surface-variant uppercase text-xs">MÃ GIẢM GIÁ</label>
 <div class="flex gap-2">
-<input class="bg-surface-container-low border-b-2 border-primary-container/30 focus:border-primary-container outline-none px-4 py-2 flex-grow text-primary placeholder:text-on-surface-variant/30" placeholder="NHẬP MÃ" type="text"/>
-<button class="px-4 py-2 bg-surface-container-highest text-primary font-button-text rounded uppercase text-sm border border-outline-variant hover:border-primary-container transition-all">ÁP DỤNG</button>
+<input id="voucherInput"
+class="bg-surface-container-low border-b-2 border-primary-container/30 focus:border-primary-container outline-none px-4 py-2 flex-grow text-primary placeholder:text-on-surface-variant/30"
+placeholder="NHẬP MÃ" type="text"/>
+
+<button onclick="applyVoucher()"
+class="px-4 py-2 bg-surface-container-highest text-primary font-button-text rounded uppercase text-sm border border-outline-variant hover:border-primary-container transition-all">
+ÁP DỤNG
+</button>
 </div>
 </div>
 </div>
@@ -294,6 +300,7 @@ THANH TOÁN
 <div class="text-slate-400 text-xs">© 2024 Modern Cyber Ticketing. Bảo lưu mọi quyền.</div>
 </div>
 </footer>
+<script src="giohang.java"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -301,6 +308,7 @@ let cart = [
   {price:129000, qty:1},
   {price:85000, qty:1}
 ];
+let discount = 0;
 function updateCart(){
   let subtotal = 0;
 
@@ -316,10 +324,23 @@ function updateCart(){
   let total = 0;
 
   // 👉 LOGIC CHUẨN Ở ĐÂY
+      let discountAmount = 0;
   if(subtotal > 0){
     serviceFee = 24500;
     processingFee = 2000;
-    total = subtotal + serviceFee + processingFee;
+
+
+if(discount > 0){
+  if(discount < 100){ // % 
+    discountAmount = subtotal * discount / 100;
+  } else { // tiền
+    discountAmount = discount;
+  }
+}
+
+total = subtotal + serviceFee + processingFee - discountAmount;
+
+if(total < 0) total = 0;
 
     // hiện phí
     document.getElementById("serviceFee").parentElement.style.display = "flex";
@@ -365,5 +386,22 @@ window.removeItem = function(i){
 updateCart();
 
 });
+window.applyVoucher = function(){
+  let code = document.getElementById("voucherInput").value.trim().toUpperCase();
+
+  if(vouchers[code]){
+    if(vouchers[code].type === "percent"){
+      discount = vouchers[code].value;
+    } else {
+      discount = vouchers[code].value;
+    }
+    alert("Áp dụng mã thành công 🎉");
+  } else {
+    discount = 0;
+    alert("Mã không hợp lệ ❌");
+  }
+
+  updateCart();
+}
 </script>
 </body></html>
