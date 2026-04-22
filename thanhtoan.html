@@ -186,7 +186,7 @@
 </div>
 </div>
 <div class="mt-stack-lg text-center space-y-stack-sm max-w-sm">
-<a href="thanhtoan1.html" class="text-primary underline mt-4 block">
+<a href="giohang.html" class="text-primary underline mt-4 block">
 ← Quay lại giỏ hàng
 </a>
 <p class="text-on-surface-variant font-body-md">Sử dụng ứng dụng ngân hàng hoặc ví điện tử để quét mã QR. Số tiền sẽ được tự động điền để đảm bảo an toàn.</p>
@@ -209,4 +209,19 @@
 <p class="text-cyan-200 dark:text-cyan-100">Bản quyền © 2024 Modern Cyber Ticketing. Bảo lưu mọi quyền.</p>
 </div>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  // lấy total từ trang giỏ hàng
+  let total = Number(localStorage.getItem("total")) || 0;
+
+  function formatVND(number){
+    return Math.round(number).toLocaleString("vi-VN") + "đ";
+  }
+
+  // hiển thị tiền
+  document.getElementById("finalTotal").innerText = formatVND(total);
+
+});
+</script>
 </body></html>
