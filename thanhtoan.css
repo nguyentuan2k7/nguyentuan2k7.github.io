@@ -1,0 +1,109 @@
+/* Tổng quát */
+:root {
+    --green: #2ecc71;
+    --dark: #000;
+    --card: #1c1c1e;
+    --gray: #8e8e93;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark);
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.hidden { display: none !important; }
+
+/* Header */
+.event-header h1 { font-size: 22px; margin-bottom: 8px; }
+.event-meta { color: var(--gray); font-size: 14px; }
+
+/* Layout Grid */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    margin-top: 30px;
+}
+
+/* Các box thông tin */
+.info-section h2 { color: var(--green); font-size: 18px; margin-bottom: 16px; }
+.info-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #2c2c2e;
+}
+.info-card label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 14px; }
+.info-card p, .info-card small { color: var(--gray); font-size: 13px; }
+
+/* Sidebar & Timer */
+.timer-card {
+    background: #2c2c2e;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+#countdown-clock { font-size: 32px; color: #ff3b30; font-weight: bold; }
+
+.summary-card {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+}
+.total-line { display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; margin: 15px 0; }
+.final-price { color: var(--green); }
+
+.btn-main-action {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.85);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 999;
+}
+.modal-box { background: #fff; color: #000; width: 400px; padding: 25px; border-radius: 12px; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.close-modal { font-size: 24px; cursor: pointer; }
+
+/* VNPAY UI */
+.vnpay-portal {
+    background: #fff;
+    color: #333;
+    padding: 40px;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+.qr-mock {
+    width: 180px; height: 180px;
+    background: #f2f2f7;
+    border: 1px solid #d1d1d6;
+    margin: 20px auto;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+}
+.btn-cancel { background: #e5e5ea; border: none; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; }
