@@ -442,6 +442,7 @@ function renderVoucherList() {
     let item = document.createElement("div");
     item.className = `flex items-center justify-between bg-surface-container border ${isSelected ? 'border-primary-container' : 'border-outline-variant'} rounded-lg px-4 py-3 cursor-pointer hover:border-primary-container transition mb-2`;
 
+    
     item.innerHTML = `
       <div>
         <div class="font-bold text-primary uppercase">${v.code}</div>
