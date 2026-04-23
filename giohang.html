@@ -165,7 +165,7 @@
 <!-- Ticket Item 1 -->
 <div class="glass-panel rounded-xl p-stack-md flex flex-col md:flex-row gap-stack-md group hover:border-primary-container/40 transition-colors">
 <div class="w-full md:w-48 h-32 rounded-lg overflow-hidden shrink-0">
-<img alt="Event Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close-up of a vibrant music festival stage with neon lights and a crowd silhouettes in electric blue atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB-EJmbXT23uH36_qBq2GX0aZsmJ9UpPf09QcI64NNCR6QDp3tKrsTJmGqnB9oI41jQD_UoT5h1J80Qzpv-xaESWpPOqSxnnYs8HnWdtF_8ydses6lQgcfh3A8OoSQd9e1jn7aOR2JBUvvLWe5ROv68AgMbBlyB9INQMEWiDhITPa1dN9bVI-KF0Hg1qL1a8OUHLLNlBKAzonBwl8Va-MN46_omUEAVjwKyJAXeZeFRwDhAZat7MxXjF39cvIRPKnI9Wmqr9_Bje3Q"/>
+<img alt="Event Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close-up of a vibrant music festival stage with neon lights and a crowd silhouettes in electric blue atmosphere" src="https://nhandan.vn/special/concert-quoc-gia/assets/VRx4fQenFT/cover-100-2560x1440.jpg"/>
 </div>
 <div class="flex-grow flex flex-col justify-between">
 <div>
@@ -201,7 +201,7 @@
 <!-- Ticket Item 2 -->
 <div class="glass-panel rounded-xl p-stack-md flex flex-col md:flex-row gap-stack-md group hover:border-primary-container/40 transition-colors">
 <div class="w-full md:w-48 h-32 rounded-lg overflow-hidden shrink-0">
-<img alt="Event Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Wide angle shot of a massive futuristic arena with architectural lines lit by cool cyan LEDs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcavcOasmQ6Vkb25UoLJYdcKpt4yqyYelUGRDTYrofgit-_GeSDIYhvv5EUXmq6gC327hUBEBlx8nuCzSksF9peVpKP7wuJ6tS-gZ6sCbG7VwlWA2HI2YriYh0o0NpOE--n_N3w2b8WFI7knR0CAGtWPjPbiH0iFmQbvM-rPSiwqPPdy-r6zhLK7nbZiucykf6dbctCU-Hn0Ac6nhOm86fwg7z7JDgHfq2a79VGEzM4coImvpljy3lonPjf_xgtKPyG463rUaCXl3Q"/>
+<img alt="Event Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Wide angle shot of a massive futuristic arena with architectural lines lit by cool cyan LEDs" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMmabDR9_-BTWnGE1sokD7FPWrqx1GVmsUeA&s"/>
 </div>
 <div class="flex-grow flex flex-col justify-between">
 <div>
@@ -235,22 +235,28 @@
 </div>
 </div>
 <!-- Bento Style Recommendation -->
-<div class="grid grid-cols-2 gap-stack-md mt-stack-lg">
-<div class="bg-secondary-container/20 border border-secondary-container rounded-xl p-6 flex flex-col justify-center items-center text-center">
-<span class="material-symbols-outlined text-4xl text-secondary mb-2">shield</span>
-<h4 class="font-headline-md text-primary">Bảo vệ Không gian mạng</h4>
-<p class="text-on-surface-variant font-body-md mt-2">Thêm bảo hiểm vé chỉ với $12.00</p>
-<button class="mt-4 px-6 py-2 border-2 border-primary-container text-primary-container rounded-full font-button-text hover:bg-primary-container/10 transition-colors uppercase">THÊM VÀO GIỎ</button>
-</div>
-<div class="bg-surface-container-highest border border-outline-variant rounded-xl p-6 flex items-center gap-4">
-<div class="flex-grow">
-<h4 class="font-headline-md text-primary">Tiệc hậu mãi độc quyền</h4>
-<p class="text-on-surface-variant font-body-md mt-1">Nâng tầm trải nghiệm của bạn.</p>
-</div>
-<button class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">star</span>
-</button>
-</div>
+<div class="grid grid-cols-2 gap-stack-md mt-stack-lg items-stretch">
+    <div class="bg-secondary-container/20 border border-secondary-container rounded-xl p-6 flex flex-col items-center text-center relative min-h-[220px]">
+        <span class="material-symbols-outlined text-4xl text-secondary mb-2">shield</span>
+        <h4 class="font-headline-md text-primary uppercase text-sm">Bảo vệ Không gian mạng</h4>
+        <p class="text-on-surface-variant font-body-md mt-2 text-xs">Thêm bảo hiểm vé chỉ với 20.000đ</p>
+        
+        <div id="insurance-action-area" class="absolute bottom-6 left-6 right-6 h-[40px] flex items-center justify-center">
+            <button id="add-insurance" class="w-full py-2 border-2 border-primary-container text-primary-container rounded-full font-bold text-xs hover:bg-primary-container/10 transition-all uppercase">
+                THÊM VÀO GIỎ
+            </button>
+        </div>
+    </div>
+
+    <div class="bg-surface-container-highest border border-outline-variant rounded-xl p-6 flex items-center gap-4 min-h-[220px]">
+        <div class="flex-grow">
+            <h4 class="font-headline-md text-primary text-sm uppercase">Tiệc hậu mãi độc quyền</h4>
+            <p class="text-on-surface-variant font-body-md mt-1 text-xs">Nâng tầm trải nghiệm của bạn.</p>
+        </div>
+        <button class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform shrink-0">
+            <span class="material-symbols-outlined">star</span>
+        </button>
+    </div>
 </div>
 </div>
 <!-- Summary Column -->
@@ -345,29 +351,29 @@
 </footer>
 <script src="vouchergiohang.js"></script>
 <script>
-// ===== DATA =====
+// ===== 1. DATA & BIẾN TOÀN CỤC =====
 let cart = [
   { price: 129000, qty: 1 },
   { price: 200000, qty: 1 }
 ];
 
-// Lấy dữ liệu từ file vouchergiohang.js qua window.vouchersData
+let insurancePrice = 0; 
 let vouchers = window.vouchersData || []; 
 let discount = 0;
 let currentVoucherType = "percent"; 
 let selectedVoucher = null;
 
-// ===== KHỞI CHẠY =====
+// ===== 2. KHỞI CHẠY =====
 document.addEventListener("DOMContentLoaded", function() {
   updateCart();
+  setupInsurance(); 
 });
 
-// ===== ĐỊNH DẠNG TIỀN =====
 function formatVND(number) {
   return Math.round(number).toLocaleString("vi-VN") + "đ";
 }
 
-// ===== CẬP NHẬT GIỎ HÀNG & TÍNH TOÁN =====
+// ===== 3. CẬP NHẬT GIỎ HÀNG & PHÍ DỊCH VỤ =====
 function updateCart() {
   let subtotal = 0;
   let qtyElements = document.querySelectorAll(".qty");
@@ -376,6 +382,9 @@ function updateCart() {
     subtotal += item.price * item.qty;
     if (qtyElements[i]) qtyElements[i].innerText = item.qty;
   });
+
+  // Cộng bảo hiểm vào tạm tính
+  subtotal += insurancePrice; 
 
   let serviceFee = 0;
   let processingFee = 0;
@@ -386,7 +395,6 @@ function updateCart() {
     serviceFee = 24500;
     processingFee = 2000;
 
-    // Tính toán giảm giá theo loại
     if (discount > 0) {
       if (currentVoucherType === "percent") {
         discountAmount = (subtotal * discount) / 100;
@@ -394,18 +402,16 @@ function updateCart() {
         discountAmount = discount;
       }
     }
-
     total = subtotal + serviceFee + processingFee - discountAmount;
     if (total < 0) total = 0;
 
-    document.getElementById("serviceRow").style.display = "flex";
-    document.getElementById("processingRow").style.display = "flex";
+    if(document.getElementById("serviceRow")) document.getElementById("serviceRow").style.display = "flex";
+    if(document.getElementById("processingRow")) document.getElementById("processingRow").style.display = "flex";
   } else {
-    document.getElementById("serviceRow").style.display = "none";
-    document.getElementById("processingRow").style.display = "none";
+    if(document.getElementById("serviceRow")) document.getElementById("serviceRow").style.display = "none";
+    if(document.getElementById("processingRow")) document.getElementById("processingRow").style.display = "none";
   }
 
-  // Hiển thị lên giao diện
   document.getElementById("subtotal").innerText = formatVND(subtotal);
   document.getElementById("serviceFee").innerText = formatVND(serviceFee);
   document.getElementById("processingFee").innerText = formatVND(processingFee);
@@ -414,30 +420,8 @@ function updateCart() {
   document.getElementById("discountRow").style.display = discountAmount > 0 ? "flex" : "none";
 }
 
-// ===== TĂNG GIẢM SỐ LƯỢNG =====
-window.increase = function(i) {
-  if (cart[i].qty < 5) {
-    cart[i].qty++;
-    updateCart();
-  }
-}
-
-window.decrease = function(i) {
-  if (cart[i].qty > 0) {
-    cart[i].qty--;
-    updateCart();
-  }
-}
-
-window.removeItem = function(i) {
-  cart[i].qty = 0;
-  updateCart();
-}
-
-// ===== XỬ LÝ VOUCHER =====
-
-// Mở/Đóng hộp chọn
-function toggleVoucherBox() {
+// ===== 4. XỬ LÝ VOUCHER (ĐÃ KHÔI PHỤC ĐỦ HÀM) =====
+window.toggleVoucherBox = function() {
   let box = document.getElementById("voucherBox");
   if (!box) return;
   box.classList.toggle("hidden");
@@ -446,7 +430,6 @@ function toggleVoucherBox() {
   }
 }
 
-// Vẽ danh sách voucher
 function renderVoucherList() {
   let list = document.getElementById("voucherList");
   if (!list) return;
@@ -477,19 +460,22 @@ function renderVoucherList() {
     list.appendChild(item);
   });
 }
-
-// Áp dụng mã
-function applyVoucher() {
-  const inputEl = document.getElementById("voucherInput");
-  const codeInput = inputEl.value.trim().toUpperCase();
-
-  if (!codeInput) {
-    alert("Bồ chưa nhập mã mà! 😗");
+// Nút dùng mã đã chọn trong bảng danh sách voucher
+window.applySelectedVoucher = function() {
+  if (!selectedVoucher) {
+    alert("Hãy chọn 1 mã trong danh sách trước nhé! 🎫");
     return;
   }
+  // Gọi lại hàm applyVoucher để thực hiện tính toán
+  applyVoucher();
+};
+
+window.applyVoucher = function() {
+  const inputEl = document.getElementById("voucherInput");
+  const codeInput = inputEl.value.trim().toUpperCase();
+  if (!codeInput) { alert("Bồ chưa nhập mã mà! 😗"); return; }
 
   const found = vouchers.find(v => v.code === codeInput);
-
   if (found) {
     selectedVoucher = found.code;
     discount = found.value;
@@ -504,8 +490,7 @@ function applyVoucher() {
   }
 }
 
-// Hủy mã
-function removeVoucher() {
+window.removeVoucher = function() {
   selectedVoucher = null;
   discount = 0;
   document.getElementById("voucherInput").value = "";
@@ -513,41 +498,47 @@ function removeVoucher() {
   alert("Đã xóa mã giảm giá 🗑️");
 }
 
-// Nút dùng mã đã chọn
-function applySelectedVoucher() {
-  if (!selectedVoucher) {
-    alert("Hãy chọn 1 mã trong danh sách trước nhé!");
-    return;
-  }
-  applyVoucher();
+// ===== 5. XỬ LÝ BẢO HIỂM (CHỐNG NHẢY BOX) =====
+function setupInsurance() {
+    const actionArea = document.getElementById('insurance-action-area');
+    if (!actionArea) return;
+
+    actionArea.addEventListener('click', function(e) {
+        const addBtn = e.target.closest('#add-insurance');
+        const removeBtn = e.target.closest('#remove-insurance');
+
+        if (addBtn) {
+            insurancePrice = 20000;
+            updateCart();
+            actionArea.innerHTML = `
+                <div class="flex gap-2 w-full h-full">
+                    <div class="flex-[1.5] bg-primary-container/20 text-primary-container rounded-full font-bold text-[10px] border border-primary-container/50 flex items-center justify-center uppercase">✓ ĐÃ THÊM</div>
+                    <button id="remove-insurance" class="flex-1 bg-error/10 text-error rounded-full font-bold text-[10px] border border-error/50 hover:bg-error hover:text-white transition-all uppercase">HỦY</button>
+                </div>`;
+        }
+        if (removeBtn) {
+            insurancePrice = 0;
+            updateCart();
+            actionArea.innerHTML = `<button id="add-insurance" class="w-full py-2 border-2 border-primary-container text-primary-container rounded-full font-bold text-xs hover:bg-primary-container/10 transition-all uppercase">THÊM VÀO GIỎ</button>`;
+        }
+    });
 }
 
-// ===== THANH TOÁN =====
-function thanhToan() {
-  const totalText = document.getElementById("total").innerText;
-  const totalAmount = totalText.replace(/[^0-9]/g, "");
+// ===== 6. TĂNG GIẢM & THANH TOÁN =====
+window.increase = function(i) { if (cart[i].qty < 5) { cart[i].qty++; updateCart(); } }
+window.decrease = function(i) { if (cart[i].qty > 0) { cart[i].qty--; updateCart(); } }
+window.removeItem = function(i) { cart[i].qty = 0; updateCart(); }
 
-  if (totalAmount === "0" || totalAmount === "") {
-    alert("Giỏ hàng trống, bạn hãy chọn vé trước nhé!");
-    return;
-  }
-
+window.thanhToan = function() {
+  const totalAmount = document.getElementById("total").innerText.replace(/[^0-9]/g, "");
+  if (totalAmount === "0" || totalAmount === "") { alert("Giỏ hàng trống!"); return; }
+  
   let ticketItems = [];
-  let eventNameShort = "";
-
-  if (cart[0].qty > 0) {
-    ticketItems.push(`${cart[0].qty}x CONCERT QUỐC GIA`);
-    eventNameShort = "CONCERT QUOC GIA";
-  }
-  if (cart[1].qty > 0) {
-    ticketItems.push(`${cart[1].qty}x VS Fashion Show`);
-    eventNameShort = eventNameShort ? "COMBO SHOW" : "VS FASHION SHOW";
-  }
-
+  if (cart[0].qty > 0) ticketItems.push(`${cart[0].qty}x CONCERT QUỐC GIA`);
+  if (cart[1].qty > 0) ticketItems.push(`${cart[1].qty}x VS Fashion Show`);
+  
   localStorage.setItem("pay_total", totalAmount);
   localStorage.setItem("pay_tickets", ticketItems.join(" + "));
-  localStorage.setItem("pay_event", eventNameShort);
-
   window.location.href = "thanhtoan.html";
 }
 </script>
