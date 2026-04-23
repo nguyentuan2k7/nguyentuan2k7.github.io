@@ -112,6 +112,24 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+    /* Box chứa danh sách voucher */
+    #voucher-container {
+        max-height: 250px; /* Độ cao cố định cho khoảng 2-3 voucher */
+        overflow-y: auto;  /* Tự động hiện thanh cuộn khi vượt quá max-height */
+        padding-right: 8px; /* Khoảng trống cho thanh cuộn */
+    }
+
+    /* Tùy chỉnh thanh cuộn cho đẹp theo tone Cyberpunk */
+    #voucher-container::-webkit-scrollbar {
+        width: 4px;
+    }
+    #voucher-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+    }
+    #voucher-container::-webkit-scrollbar-thumb {
+        background: #22d3ee; /* Màu cyan giống giao diện của bạn */
+        border-radius: 10px;
+    }
     </style>
 <style>
   @font-face {
@@ -299,10 +317,11 @@
         DÙNG MÃ ĐÃ CHỌN
     </button>
 </div>
-<a href="thanhtoan.html"
-class="w-full py-6 bg-primary-container text-on-primary-container font-display-xl text-xl rounded-xl uppercase tracking-widest cyber-glow hover:bg-primary-fixed hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
-THANH TOÁN 
-<span class="material-symbols-outlined font-bold">arrow_forward</span>
+<button onclick="thanhToan()"
+  class="w-full py-6 bg-primary-container text-on-primary-container font-display-xl text-xl rounded-xl uppercase tracking-widest cyber-glow hover:bg-primary-fixed hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
+  THANH TOÁN 
+  <span class="material-symbols-outlined font-bold">arrow_forward</span>
+</button>
 </a>
 <div class="mt-stack-lg flex items-center justify-center gap-4 text-on-surface-variant opacity-50">
 <span class="material-symbols-outlined">lock</span>
@@ -326,39 +345,36 @@ THANH TOÁN
 </footer>
 <script src="vouchergiohang.js"></script>
 <script>
-
 // ===== DATA =====
 let cart = [
-  {price:129000, qty:1},
-  {price:200000, qty:1}
+  { price: 129000, qty: 1 },
+  { price: 200000, qty: 1 }
 ];
 
+// Lấy dữ liệu từ file vouchergiohang.js qua window.vouchersData
+let vouchers = window.vouchersData || []; 
 let discount = 0;
+let currentVoucherType = "percent"; 
+let selectedVoucher = null;
 
-let vouchers = {
-  "GIAM10": {type:"percent", value:10},
-  "GIAM50K": {type:"fixed", value:50000}
-};
-
-// ===== LOAD =====
-document.addEventListener("DOMContentLoaded", function(){
+// ===== KHỞI CHẠY =====
+document.addEventListener("DOMContentLoaded", function() {
   updateCart();
 });
 
-// ===== FORMAT =====
-function formatVND(number){
+// ===== ĐỊNH DẠNG TIỀN =====
+function formatVND(number) {
   return Math.round(number).toLocaleString("vi-VN") + "đ";
 }
 
-// ===== UPDATE CART =====
-function updateCart(){
-
+// ===== CẬP NHẬT GIỎ HÀNG & TÍNH TOÁN =====
+function updateCart() {
   let subtotal = 0;
-  let qty = document.querySelectorAll(".qty");
+  let qtyElements = document.querySelectorAll(".qty");
 
-  cart.forEach((item, i)=>{
+  cart.forEach((item, i) => {
     subtotal += item.price * item.qty;
-    qty[i].innerText = item.qty;
+    if (qtyElements[i]) qtyElements[i].innerText = item.qty;
   });
 
   let serviceFee = 0;
@@ -366,110 +382,87 @@ function updateCart(){
   let discountAmount = 0;
   let total = 0;
 
-  if(subtotal > 0){
-
+  if (subtotal > 0) {
     serviceFee = 24500;
     processingFee = 2000;
 
-    // 👉 tính giảm giá
-    if(discount > 0){
-      if(discount < 100){
-        discountAmount = subtotal * discount / 100;
+    // Tính toán giảm giá theo loại
+    if (discount > 0) {
+      if (currentVoucherType === "percent") {
+        discountAmount = (subtotal * discount) / 100;
       } else {
         discountAmount = discount;
       }
     }
 
     total = subtotal + serviceFee + processingFee - discountAmount;
+    if (total < 0) total = 0;
 
-    if(total < 0) total = 0;
-
-    // hiện phí
     document.getElementById("serviceRow").style.display = "flex";
     document.getElementById("processingRow").style.display = "flex";
-
   } else {
-
-    total = 0;
-    serviceFee = 0;
-    processingFee = 0;
-    discountAmount = 0;
-
-    // ẩn phí
     document.getElementById("serviceRow").style.display = "none";
     document.getElementById("processingRow").style.display = "none";
   }
 
-  // 👉 HIỂN THỊ
+  // Hiển thị lên giao diện
   document.getElementById("subtotal").innerText = formatVND(subtotal);
   document.getElementById("serviceFee").innerText = formatVND(serviceFee);
   document.getElementById("processingFee").innerText = formatVND(processingFee);
   document.getElementById("total").innerText = formatVND(total);
-
-  // 👉 HIỂN THỊ GIẢM GIÁ
   document.getElementById("discountAmount").innerText = "-" + formatVND(discountAmount);
   document.getElementById("discountRow").style.display = discountAmount > 0 ? "flex" : "none";
 }
 
-// ===== BUTTON =====
-window.increase = function(i){
-  if(cart[i].qty < 5){
+// ===== TĂNG GIẢM SỐ LƯỢNG =====
+window.increase = function(i) {
+  if (cart[i].qty < 5) {
     cart[i].qty++;
     updateCart();
   }
 }
 
-window.decrease = function(i){
-  if(cart[i].qty > 0){
+window.decrease = function(i) {
+  if (cart[i].qty > 0) {
     cart[i].qty--;
     updateCart();
   }
 }
 
-window.removeItem = function(i){
+window.removeItem = function(i) {
   cart[i].qty = 0;
   updateCart();
 }
-function toggleVoucherBox(){
+
+// ===== XỬ LÝ VOUCHER =====
+
+// Mở/Đóng hộp chọn
+function toggleVoucherBox() {
   let box = document.getElementById("voucherBox");
-
+  if (!box) return;
   box.classList.toggle("hidden");
-
-  if(!box.classList.contains("hidden")){
+  if (!box.classList.contains("hidden")) {
     renderVoucherList();
   }
 }
 
-// Biến lưu trữ
-let selectedVoucher = null;
-
-// Hàm mở/đóng hộp chọn
-function toggleVoucherBox(){
-  let box = document.getElementById("voucherBox");
-  box.classList.toggle("hidden");
-  if(!box.classList.contains("hidden")){
-    renderVoucherList();
-  }
-}
-
-// Hàm vẽ danh sách voucher
-function renderVoucherList(){
+// Vẽ danh sách voucher
+function renderVoucherList() {
   let list = document.getElementById("voucherList");
+  if (!list) return;
   list.innerHTML = "";
 
-  Object.keys(vouchers).forEach(code => {
-    let v = vouchers[code];
-    let isSelected = (selectedVoucher === code);
+  vouchers.forEach(v => {
+    let isSelected = (selectedVoucher === v.code);
+    let displayValue = v.type === "percent" ? v.value + "%" : formatVND(v.value);
 
     let item = document.createElement("div");
-    item.className = `flex items-center justify-between bg-surface-container border ${isSelected ? 'border-primary-container' : 'border-outline-variant'} rounded-lg px-4 py-3 cursor-pointer hover:border-primary-container transition`;
+    item.className = `flex items-center justify-between bg-surface-container border ${isSelected ? 'border-primary-container' : 'border-outline-variant'} rounded-lg px-4 py-3 cursor-pointer hover:border-primary-container transition mb-2`;
 
     item.innerHTML = `
       <div>
-        <div class="font-bold text-primary">${code}</div>
-        <div class="text-sm text-on-surface-variant">
-          ${v.type === "percent" ? v.value + "%" : formatVND(v.value)} giảm
-        </div>
+        <div class="font-bold text-primary uppercase">${v.code}</div>
+        <div class="text-xs text-on-surface-variant">${displayValue} giảm</div>
       </div>
       <div class="w-5 h-5 rounded-full border-2 border-primary-container flex items-center justify-center">
         <div class="w-3 h-3 rounded-full bg-primary-container ${isSelected ? "" : "hidden"}"></div>
@@ -477,43 +470,41 @@ function renderVoucherList(){
     `;
 
     item.onclick = () => {
-      selectedVoucher = code;
-      // Khi click vào list, tự điền code vào ô input luôn cho tiện
-      document.getElementById("voucherInput").value = code;
+      selectedVoucher = v.code;
+      document.getElementById("voucherInput").value = v.code;
       renderVoucherList();
     };
     list.appendChild(item);
   });
 }
 
-// HÀM QUAN TRỌNG: ÁP DỤNG MÃ
+// Áp dụng mã
 function applyVoucher() {
   const inputEl = document.getElementById("voucherInput");
-  const code = inputEl.value.trim().toUpperCase(); // Chuyển chữ hoa để khớp với data
+  const codeInput = inputEl.value.trim().toUpperCase();
 
-  if (!code) {
-    alert("Chưa nhập mã mà bạn ơi 😗");
+  if (!codeInput) {
+    alert("Bồ chưa nhập mã mà! 😗");
     return;
   }
 
-  if (!vouchers[code]) {
-    alert("Mã này không đúng rồi, thử mã khác nhé! ❌");
-    // Nếu sai thì reset chiết khấu về 0
+  const found = vouchers.find(v => v.code === codeInput);
+
+  if (found) {
+    selectedVoucher = found.code;
+    discount = found.value;
+    currentVoucherType = found.type;
+    updateCart();
+    document.getElementById("voucherBox").classList.add("hidden");
+    alert("Áp dụng thành công mã " + found.code + "! 🎉");
+  } else {
+    alert("Mã này không đúng rồi bồ ơi! ❌");
     discount = 0;
     updateCart();
-    return;
   }
-
-  // Nếu mã đúng
-  selectedVoucher = code;
-  discount = vouchers[code].value;
-  
-  updateCart();
-  document.getElementById("voucherBox").classList.add("hidden");
-  alert("Áp dụng thành công! 🎉");
 }
 
-// HÀM HỦY CHỌN
+// Hủy mã
 function removeVoucher() {
   selectedVoucher = null;
   discount = 0;
@@ -522,15 +513,42 @@ function removeVoucher() {
   alert("Đã xóa mã giảm giá 🗑️");
 }
 
-// Hàm hỗ trợ cho nút "Dùng mã đã chọn"
+// Nút dùng mã đã chọn
 function applySelectedVoucher() {
-    if(!selectedVoucher) {
-        alert("Hãy chọn 1 mã trong danh sách trước nhé!");
-        return;
-    }
-    applyVoucher();
-  updateCart();
+  if (!selectedVoucher) {
+    alert("Hãy chọn 1 mã trong danh sách trước nhé!");
+    return;
+  }
+  applyVoucher();
 }
 
+// ===== THANH TOÁN =====
+function thanhToan() {
+  const totalText = document.getElementById("total").innerText;
+  const totalAmount = totalText.replace(/[^0-9]/g, "");
+
+  if (totalAmount === "0" || totalAmount === "") {
+    alert("Giỏ hàng trống, bạn hãy chọn vé trước nhé!");
+    return;
+  }
+
+  let ticketItems = [];
+  let eventNameShort = "";
+
+  if (cart[0].qty > 0) {
+    ticketItems.push(`${cart[0].qty}x CONCERT QUỐC GIA`);
+    eventNameShort = "CONCERT QUOC GIA";
+  }
+  if (cart[1].qty > 0) {
+    ticketItems.push(`${cart[1].qty}x VS Fashion Show`);
+    eventNameShort = eventNameShort ? "COMBO SHOW" : "VS FASHION SHOW";
+  }
+
+  localStorage.setItem("pay_total", totalAmount);
+  localStorage.setItem("pay_tickets", ticketItems.join(" + "));
+  localStorage.setItem("pay_event", eventNameShort);
+
+  window.location.href = "thanhtoan.html";
+}
 </script>
 </body></html>
