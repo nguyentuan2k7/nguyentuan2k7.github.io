@@ -524,6 +524,7 @@ function setupInsurance() {
         }
     });
 }
+// ===== 6. TĂNG GIẢM & THANH TOÁN =====
 window.increase = function(i) { if (cart[i].qty < 5) { cart[i].qty++; updateCart(); } }
 window.decrease = function(i) { if (cart[i].qty > 0) { cart[i].qty--; updateCart(); } }
 window.removeItem = function(i) { cart[i].qty = 0; updateCart(); }
